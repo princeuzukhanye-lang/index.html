@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine's Question</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: pink;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      margin-top: 50px;
+      font-size: 2.5em;
+      color: #d60093;
+    }
+    .emoji {
+      font-size: 4em;
+      margin-top: 20px;
+    }
+    .btn {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 10px;
+      color: white;
+    }
+    .yes { background-color: green; }
+    .no { background-color: red; }
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 2em;
+      animation: floatUp 6s linear infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(1); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="emoji">🐶💌</div>
+  <h1>Will you be my Valentine’s?</h1>
+  <button class="btn yes" onclick="window.location.href='letter.html'">Yes</button>
+  <button class="btn no" onclick="alert('Oh no! Try again ❤️')">No</button>
+
+  <script>
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 500);
+  </script>
+</body>
+</html>
