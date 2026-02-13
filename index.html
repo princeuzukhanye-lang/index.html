@@ -2,65 +2,195 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Valentine's Question</title>
+  <title>Valentine for My Mirrorball</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: pink;
+      background: white;
+      color: red;
       text-align: center;
+      font-family: 'Arial', sans-serif;
       overflow: hidden;
     }
     h1 {
       margin-top: 50px;
-      font-size: 2.5em;
-      color: #d60093;
     }
-    .emoji {
-      font-size: 4em;
-      margin-top: 20px;
-    }
-    .btn {
-      padding: 15px 30px;
-      font-size: 1.2em;
-      border: none;
-      cursor: pointer;
-      margin: 10px;
-      border-radius: 10px;
+    button {
+      background: red;
       color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
     }
-    .yes { background-color: green; }
-    .no { background-color: red; }
+    #loading {
+      width: 0;
+      height: 20px;
+      background: red;
+      margin: 20px auto;
+      transition: width 30s linear;
+    }
+    #letter {
+      display: none;
+      margin: 30px;
+      font-size: 18px;
+      line-height: 1.6;
+      animation: fadeIn 3s ease-in;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .hearts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
     .heart {
       position: absolute;
-      color: red;
-      font-size: 2em;
-      animation: floatUp 6s linear infinite;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 10s infinite;
     }
-    @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(1); opacity: 1; }
-      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    @keyframes float {
+      0% { top: 100%; opacity: 0; }
+      50% { opacity: 1; }
+      100% { top: -10%; opacity: 0; }
+    }
+    /* Dancing Bear */
+    .bear {
+      position: relative;
+      width: 150px;
+      height: 200px;
+      margin: 20px auto;
+      animation: dance 1s infinite alternate;
+    }
+    @keyframes dance {
+      from { transform: rotate(-8deg) translateY(0); }
+      to { transform: rotate(8deg) translateY(-10px); }
+    }
+    .ear {
+      width: 40px;
+      height: 40px;
+      background: #8B4513;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+    }
+    .ear.left { left: 10px; }
+    .ear.right { right: 10px; }
+    .head {
+      width: 120px;
+      height: 120px;
+      background: #A0522D;
+      border-radius: 50%;
+      position: absolute;
+      top: 20px;
+      left: 15px;
+    }
+    .eye {
+      width: 15px;
+      height: 15px;
+      background: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 40px;
+    }
+    .eye.left { left: 30px; }
+    .eye.right { right: 30px; }
+    .nose {
+      width: 20px;
+      height: 15px;
+      background: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 65px;
+      left: 50px;
+    }
+    .mouth {
+      width: 40px;
+      height: 20px;
+      border-bottom: 3px solid black;
+      position: absolute;
+      top: 85px;
+      left: 40px;
+    }
+    .body {
+      width: 100px;
+      height: 120px;
+      background: #8B4513;
+      border-radius: 50px;
+      position: absolute;
+      top: 130px;
+      left: 25px;
+    }
+    .letter {
+      font-size: 40px;
+      position: absolute;
+      top: 40px;
+      left: 30px;
+    }
+    img {
+      margin: 10px;
+      border: 5px solid red;
+      border-radius: 10px;
+      box-shadow: 0 0 20px red;
     }
   </style>
 </head>
 <body>
-  <div class="emoji">🐶💌</div>
-  <h1>Will you be my Valentine’s?</h1>
-  <button class="btn yes" onclick="window.location.href='letter.html'">Yes</button>
-  <button class="btn no" onclick="alert('Oh no! Try again ❤️')">No</button>
+  <h1>Will you be my Valentine?</h1>
+  <button onclick="startValentine()">Yes</button>
+  <button>No</button>
+
+  <div id="loading"></div>
+  <audio id="music" src="Camila Cabello - First Man (Audio) - CamilaCabelloVEVO (youtube).mp3"></audio>
+
+  <div id="letter">
+    <div class="bear">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+      <div class="head">
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="nose"></div>
+        <div class="mouth"></div>
+      </div>
+      <div class="body">
+        <div class="letter">💌</div>
+      </div>
+    </div>
+    <p>
+      My Mirrorball, Athenkosi, from the very first moment you came into my life, I knew you were something extraordinary. You became my first true love, the one who showed me what it means to belong to someone completely. I will never forget our first intimacy together — it was in that moment I realized my soul was yours, forever. You’ve given me joy, comfort, and a love so deep that I feel it in every heartbeat. Meeting you at our Paranottis date impressed me beyond words; it was the beginning of a journey that continues to amaze me every day. You are the best boyfriend I could ever ask for, and I honor you for being the one who makes me feel seen, cherished, and loved.
+    </p>
+    <p>
+      Thank you, my love, for everything you have done and continue to do for me. Thank you for appreciating me as your boyfriend, for loving me just the same, and for showing me that love is not only about passion but also about care, respect, and devotion. I will always love you, and I will never forget you. You are my mirrorball, reflecting back the brightest parts of me, and I promise to keep shining for you. With every memory we create, every laugh we share, and every moment we hold close, I am reminded that my heart belongs to you. Forever yours, Uzukhanye.
+    </p>
+    <img src="1770850803249.jpg" width="200">
+    <img src="IMG-2026-01-31-WA0056_edit_188204152436140.jpg" width="200">
+    <img src="IMG-20260131-WA0059_edit_188188654338524.jpg" width="200">
+  </div>
+
+  <div class="hearts">
+    <div class="heart" style="left:10%; animation-delay:0s;"></div>
+    <div class="heart" style="left:30%; animation-delay:2s;"></div>
+    <div class="heart" style="left:50%; animation-delay:4s;"></div>
+    <div class="heart" style="left:70%; animation-delay:6s;"></div>
+    <div class="heart" style="left:90%; animation-delay:8s;"></div>
+  </div>
 
   <script>
-    // Floating hearts
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.innerText = '❤️';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
+    function startValentine() {
+      document.getElementById('loading').style.width = "100%";
+      setTimeout(() => {
+        document.getElementById('music').play();
+        document.getElementById('letter').style.display = "block";
+      }, 30000); // 30 seconds
     }
-    setInterval(createHeart, 500);
   </script>
 </body>
 </html>
